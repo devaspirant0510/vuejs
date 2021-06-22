@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+
+</script>
+<div id="app">
+    <app-button>
+
+    </app-button>
+</div>
+<script>
+    const button = {
+        template: "<button v-on:click='passEvent'>click me</button>",
+        methods: {
+            passEvent: function () {
+                this.$emit("pass")
+
+            }
+        }
+    }
+    const vm = new Vue({
+        el: "#app",
+        components: {
+            "app-button": button
+
+        }
+    })
+</script>
+
+
+</body>
+</html>

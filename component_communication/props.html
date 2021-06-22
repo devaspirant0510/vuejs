@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <!-- app-header 에 pros 등록시킬때 v-bind:자식컴포넌트의 props 이름="바꿀대상"-->
+    <app-header v-bind:props_data="message">
+
+    </app-header>
+    <app-content v-bind:number_data="num">
+
+    </app-content>
+
+</div>
+<script src="props.js">
+
+</script>
+
+</body>
+</html>
