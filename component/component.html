@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <app-header> </app-header>
+</div>
+<div id="app2">
+    <app-header> </app-header>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 전역 컴포넌트
+    Vue.component("app-header", {
+        template: "<h1>header</h1>"
+    });
+    Vue.component("app-content", {
+        template: "<p>재미있는 뷰 제이에스스</p>"
+    });
+
+    new Vue({
+        el: "#app",
+        // 지역컴포넌트
+        components: {
+            "app-local": {
+                template: "<h3>지역 컴포넌트</h3>"
+            }
+        }
+    });
+    new Vue({
+        el:"#app2"
+    })
+
+</script>
+</body>
+</html>
