@@ -9,9 +9,13 @@
 
 </script>
 <div id="app">
-    <app-button>
+    <app-button v-on:pass="sayHi">
 
     </app-button>
+    <app-content v-on:add="addNum">
+
+    </app-content>
+    <app-root v-bind:my_number="num"></app-root>
 </div>
 <script>
     const button = {
@@ -23,13 +27,38 @@
             }
         }
     }
+    const content = {
+        template:'<button v-on:click="addNum">add</button>',
+        methods:{
+            addNum:function (){
+                this.$emit("add")
+            }
+        }
+    };
+    const root = {
+        template:'<div>{{my_number}}</div>',
+        props:['my_number']
+    }
     const vm = new Vue({
         el: "#app",
         components: {
-            "app-button": button
+            "app-button": button,
+            "app-content":content,
+            "app-root":root
 
+        },
+        methods: {
+            sayHi: function () {
+                console.log("hit");
+            },
+            addNum:function (){
+                this.num+=1;
+            }
+        },
+        data:{
+            num:10
         }
-    })
+    });
 </script>
 
 
