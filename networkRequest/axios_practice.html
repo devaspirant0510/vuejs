@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios </title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<div id="app">
+    <button v-on:click="getRequest">button</button>
+    <app-content v-bind:data="list">
+
+    </app-content>
+
+</div>
+
+<script>
+    const appContent = {
+        template:"<div > {{data}}</div>",
+        props:['data']
+    }
+    new Vue({
+        el:"#app",
+        methods:{
+            getRequest:function (){
+                const vm = this;
+                axios.get("https://jsonplaceholder.typicode.com/users").then(value => {
+                    console.log(value)
+                    vm.list = value.data
+                });
+            }
+        },
+        components:{
+            "app-content":appContent
+        },
+        data:{
+            list:"[]"
+        }
+    });
+</script>
+</body>
+</html>
