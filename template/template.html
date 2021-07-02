@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #idA{
+            background: aqua;
+        }
+        #idB{
+            background: tomato;
+        }
+        .classA{
+            font-size: 10px;
+        }
+        .classB{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <div>{{num}}</div>
+    <div v-bind:class="reactClass">{{doubleNum}}</div>
+    <div v-bind:id="reactId">a</div>
+    <!-- v-if v-else 는 조건에 안맞을시 태그 자체를 삭제
+         v-show 는 스타일에서 display-none 처리하여 안보이게만 함 -->
+    <div v-if="loading">로딩중</div>
+    <div v-else>로딩성공</div>
+
+    <div v-show="loading">ㅋㅋㅋㅋ</div>
+    <input v-model="inputVal"/>
+    <div>{{inputVal}}</div>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            num:20,
+            reactClass:"classA",
+            reactId:"idA",
+            loading:true,
+            inputVal:""
+        },
+        computed:{
+            doubleNum:function (){
+                return this.num * 2;
+            }
+        }
+    });
+
+</script>
+
+
+</body>
+</html>
