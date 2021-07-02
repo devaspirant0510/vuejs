@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+    <app-header v-on:pass="gn">
+
+    </app-header>
+    <app-content v-bind:mydata="myMessage">
+
+    </app-content>
+</div>
+<script>
+    const appHeader = {
+        template: '<div>appHeader<button v-on:click="headerEmit">click</button></div> ',
+        methods: {
+            headerEmit: function () {
+                this.$emit("pass",30)
+            }
+        }
+
+    };
+    const appContent = {
+        template: '<div>{{mydata}}</div>',
+        props:['mydata']
+    }
+    const vm = new Vue({
+        el: "#app",
+        components: {
+            "app-header": appHeader,
+            "app-content": appContent
+        },
+        methods: {
+            gn: function (value) {
+                console.log("say hello");
+                this.myMessage = value
+
+            }
+        },
+        data:{
+            myMessage:"대기중",
+            umm:"sf0",
+        }
+
+    })
+</script>
+
+</body>
+</html>
