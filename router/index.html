@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <router-link to="/main"> MAIN
+
+    </router-link>
+    <router-link to="/login">LOGIN
+
+    </router-link>
+    <app-header>
+
+    </app-header>
+    <router-view>
+
+    </router-view>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    const loginComponent = {
+        template : "<div>login</div>"
+    }
+    const mainComponent = {
+        template: "<h1>main</h1>"
+    }
+    const router = new VueRouter({
+        routes:[
+            {
+                path:"/login",
+                component:loginComponent
+            },
+            {
+                path:"/main",
+                component: mainComponent
+            }
+        ]
+    });
+    const Header = {
+        template:'<h1>header</h1>'
+    }
+    new Vue({
+        el:"#app",
+        router:router,
+        components:{
+            "app-header":Header
+        }
+    })
+</script>
+
+</body>
+</html>
